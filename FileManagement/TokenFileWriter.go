@@ -1,4 +1,4 @@
-package fileManagement
+package FileManagement
 
 import (
 	"bufio"
@@ -28,7 +28,7 @@ func CreateAndWriteTokens(tokenCount int, tokenLength int) {
 }
 
 func WriteToFile(tokens string) {
-	file, err := os.OpenFile("./tokens.txt", os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile("./tokens.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	defer file.Close()
 
 	if err != nil {
@@ -41,26 +41,4 @@ func WriteToFile(tokens string) {
 
 	datawriter.Flush()
 	file.Close()
-}
-
-func ReadTokens() {
-	file, err := os.Open("./tokens.txt")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
-	for scanner.Scan() {
-
-		// fmt.Println(scanner.Text())
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
 }

@@ -16,3 +16,6 @@
 
 # Generated token file
 tokens.txt
+
+#Database files
+*.db
